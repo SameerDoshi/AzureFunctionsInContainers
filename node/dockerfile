@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/azure-functions/node:3.0-node10-core-tools
+
+RUN mkdir /app
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+
+COPY ./ /app/
+RUN npm install
+EXPOSE 7071
+ENTRYPOINT ["npm", "start"]
